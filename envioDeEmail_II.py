@@ -24,7 +24,7 @@ def enviarEmail():
     # Criando lista de Destinatários
     destinatarios = ['thiago.conegundes@gmail.com' , 'thiago.conegundes@edu.pbh.gov.br']
 
-    password = 'Th1505@'
+    password = 'Inserir Senha'
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(corpo_Email)
 
