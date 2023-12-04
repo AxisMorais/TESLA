@@ -1,24 +1,27 @@
 ##-----------------------------------------------------------------------------------------------
-## CARGA SGEE ##
+                                            ## CARGA SGEE ##
 ##-----------------------------------------------------------------------------------------------
-# Importando os Módulos
-import time
+# Importando os Módulos e bibliotecas
 
-from selenium import webdriver
+import time
 from selenium.webdriver.common.by import By
 from datetime import datetime
+from selenium import webdriver
 
 # ABRIR O NAVEGADOR
+
+# Inicia o webdriver
+driver = webdriver.chrome
+
 navegador = webdriver.Chrome()
 
-# ACESSAR O SITE DO CIC:
-navegador.get('http://cic-hm.pbh/')
+navegador.get('http://cic.pbh/')
 
-# ENCONTRAR O ELEMENTO COM A TAG NAME NO HTML E ESCREVENDO NO CAMPO O LOGIN DO SISTEMA:
-navegador.find_element(By.NAME, 'josso_username').send_keys('Inserir login de acesso')
+campo_username = navegador.find_element(by='name', value='josso_username')
+campo_username.send_keys('thiago.conegundes')
 
-# ENCONTRAR O ELEMENTO COM A TAG NAME NO HTML E ESCREVER A SENHA PARA ACESSAR O SISTEMA:
-navegador.find_element(By.NAME, 'josso_password').send_keys('Inserir senha de acesso')
+campo_senha = navegador.find_element(by='name', value='josso_password')
+campo_senha.send_keys('Th1505@')
 
 # Clicar no botão para acessar o sistema:
 navegador.find_element(By.CLASS_NAME, "botao").click()
