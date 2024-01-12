@@ -43,47 +43,7 @@ class ExecutorCargaCAT:
 
             # Clicar na opção do agendador
             navegador.find_element(By.ID, "datahora").click()
-
-            #Calculo do minuto adicional
-            dataCompletaSistema = datetime.now()
-            dataFormatadaString = dataCompletaSistema.strftime('%d/%m/%Y %H:%M')
-            minutoSeparadoString = dataCompletaSistema.strftime('%M')
-            minutoSeparadoInt = int(minutoSeparadoString)
-
-            # Caso tradicional: Incrementar um minuto
-            minutoIncrementado = (minutoSeparadoInt + 3)
-            minutoIncrementado = str(minutoIncrementado)
-            dataSeparadaComMinuto = dataFormatadaString[0:14]
-            tempoFinal = (dataSeparadaComMinuto + minutoIncrementado)
-
-            # Caso o minuto chegar em 58 ou 59 é necessário zerar os minutos e incrementar as horas
-            if (minutoSeparadoInt == 58 or minutoSeparadoInt == 59):
-                horaSeparadaString = dataCompletaSistema.strftime('%I')
-                horaSeparadaInt = int(horaSeparadaString)
-                horaSeparadaInt = horaSeparadaInt + 1
-                horaSeparadaString = str(horaSeparadaInt)
-                minutoIncrementado = 3
-                minutoIncrementadoString = str(minutoIncrementado)
-                novaData = dataFormatadaString[0:11]
-                horaFinal = (horaSeparadaString + ':0' + minutoIncrementadoString)
-                dataFinal = (novaData + horaFinal)
-                navegador.find_element(By.ID, "datahora").send_keys(dataFinal)
-                time.sleep(6)
-                print(tempoFinal)
-
-            # ----------------------------------------------------------------------------------
-            # Caso estivermos no intervalo de tempo do minuto 00 à 09
-            if (minutoSeparadoInt >= 0 and minutoSeparadoInt <= 7):
-                minutoSeparadoInt = minutoSeparadoInt + 2
-                minutoSeparadoString = str(minutoSeparadoInt)
-                minutoSeparadoString = ('0' + minutoSeparadoString)
-                novadata = dataFormatadaString[0:14]
-                dataFinal = (novadata + minutoSeparadoString)
-                print(dataFinal)
-            # Escrevendo o horário no campo data hora
-            navegador.find_element(By.ID, "datahora").send_keys('dataFinal')
-
-            navegador.find_element(By.ID, "datahora").send_keys(tempoFinal)
+          
             # ------------------------------------------------------------------------------
             # Esperando por 3 segundo a finalização da esrita
             time.sleep(3)
